@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Main, TabMenu, Tab, TabContent } from './styles';
 
 const numberToMonth = (number) => {
   const MONTH_TYPE = {
@@ -63,27 +64,25 @@ function Taps({ currency, result, mock }) {
   };
 
   return (
-    <div>
-      <ul>
-        {tabArr.map(
-          (section, index) => (
-            // {
-            //   return currency === section.tabTitle ? (
-            //     <h3 key={index}>{section.tabTitle}</h3>
-            //   ) : (
-            <li key={index} onClick={() => tabClickHandler(index)}>
-              {section.tabTitle}
-            </li>
-          )
-          //   );
-          // }
-        )}
-      </ul>
-      <h1>
-        {tabArr[activeIndex].tabTitle} : {result.substr()}
-      </h1>
-      <p>기준일 : {unixTimestamp(mock.timestamp)}</p>
-    </div>
+    <Main>
+      <TabMenu>
+        {tabArr.map((section, index) => (
+          <Tab
+            key={index}
+            onClick={() => tabClickHandler(index)}
+            isActive={activeIndex === index}
+          >
+            {section.tabTitle}
+          </Tab>
+        ))}
+      </TabMenu>
+      <TabContent>
+        <h2>
+          {tabArr[activeIndex].tabTitle} : {result.substr()}
+        </h2>
+        <p>기준일 : {unixTimestamp(mock.timestamp)}</p>
+      </TabContent>
+    </Main>
   );
 }
 

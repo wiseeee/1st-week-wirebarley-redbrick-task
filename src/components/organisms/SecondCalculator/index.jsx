@@ -12,12 +12,19 @@ function SecondCalculator() {
     privacy: 'https://currencylayer.com/privacy',
     timestamp: 1643011864,
   });
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState('');
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <>
-      <InputSelect currencyList={currency} input={input} setInput={setInput} selected={selected} setSelected={setSelected}></InputSelect>
-      <Tabs currency={selected} mock={mock} result={input}/>
+      <InputSelect
+        currencyList={currency}
+        input={input}
+        setInput={setInput}
+        selected={selected}
+        setSelected={setSelected}
+      ></InputSelect>
+      <Tabs currency={selected} mock={mock} result={input} />
     </>
   );
 }
