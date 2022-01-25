@@ -5,16 +5,26 @@
 <h1 align="middle">[과제] 와이어바알리/레드브릭</h1>
 
 ## 🔗 배포
-
+[Link](https://www.example.com)
 <br>
 
 ## ⚙️ 설치 및 시작하는 법
-
+```
+git clone https://github.com/pre-onboarding-course-team-6/1st-week-wirebarley-redbrick-task
+npm i or yarn
+```
 <br>
 
 ## 🏹 과제 구현 목록
 
 > 구현사항 정리 [🔗]()
+## 공통기능 
+1. 
+## 계산기 👆
+1. 
+
+## 계산기 ✌
+1. 
 
 <br>
 
@@ -22,7 +32,7 @@
 
 ### 제목
 
-<img src="" width="100%"/>
+![calculator](https://user-images.githubusercontent.com/34917143/151076441-0c803a98-d564-4fb2-9630-45eed857a3a9.gif)
 
 <br>
 
