@@ -3,14 +3,21 @@
 
 import React from 'react';
 
-const DropDown = ({ name = 'currency', id = 'currency', arr }) => (
-  <select name="currency" id="currency">
-    {arr.map((str) => (
-      <option key={arr.indexOf(str)} value={str}>
-        {str}
-      </option>
-    ))}
-  </select>
-);
+function DropDown ({ name = 'currency', id = 'currency', arr, selected, setSelected }) {
+    const handleSelect = (e) => {
+        setSelected(e.target.value)
+    } 
+    return (
+        <select onChange={handleSelect} name="currency" id="currency">
+            {arr.map((str) => (
+            <option key={arr.indexOf(str)} value={str} >
+                {str}
+            </option>
+            ))}
+        </select>
+    );
+} 
 
+
+    
 export default DropDown;

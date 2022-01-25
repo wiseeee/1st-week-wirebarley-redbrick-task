@@ -31,9 +31,10 @@ const onChange = (e) => {
   if (Number(inputValue) > 1000) {
     e.target.value = 1000;
   }
+  
 };
 
-const Input = ({ type = 'text', id = '' }) => (
+const Input = ({ type = 'text', id = '', }) => (
   <input type={type} id={id} onChange={onChange} />
 );
 
