@@ -8,21 +8,7 @@ const currencyList = ['USD', 'CAD', 'KRW', 'HKD', 'JPY', 'CNY'];
 function SecondCalculator() {
   const [selected, setSelected] = useState('USD');
   const [tabSelected, setTabSelected] = useState('USD');
-  const [data, setData] = useState({
-    success: true,
-    terms: 'https://currencylayer.com/terms',
-    privacy: 'https://currencylayer.com/privacy',
-    timestamp: 1643098263,
-    source: 'USD',
-    quotes: {
-      USDCAD: 1.264085,
-      USDKRW: 1197.43985,
-      USDHKD: 7.785895,
-      USDJPY: 113.874496,
-      USDCNY: 6.327897,
-      USDPHP: 51.220502,
-    },
-  });
+  const [data, setData] = useState();
   const [input, setInput] = useState('');
   const [exchanged, setExchanged] = useState(0);
 
@@ -39,7 +25,7 @@ function SecondCalculator() {
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => console.log(result))
+      .then((result) => setData(result))
       .catch((error) => console.log('error', error));
   }, [selected]);
 

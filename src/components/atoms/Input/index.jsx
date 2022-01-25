@@ -2,7 +2,7 @@
 // src/components/atoms/input/index.js
 import React from 'react';
 
-const numAddComma = (num) => new Intl.NumberFormat().format(num);
+const numAddComma = (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
 function Input({ type = 'text', id = '', setInput }) {
   const onChange = (e) => {
@@ -23,7 +23,8 @@ function Input({ type = 'text', id = '', setInput }) {
     } else if (isDoubleZero(value)) {
       e.target.value = 0;
     } else {
-      setInput(inputValue);
+      e.target.value = numAddComma(inputValue)
+      setInput(numAddComma(inputValue));
     }
   };
 

@@ -5,7 +5,7 @@ import SecondCalculator from './components/organisms/SecondCalculator';
 function App() {
   return (
     <>
-      {/* <FirstCalculator /> */}
+      <FirstCalculator />
       <SecondCalculator />
     </>
   );
