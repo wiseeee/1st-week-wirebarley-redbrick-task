@@ -1,7 +1,12 @@
 import React from 'react';
+import SecondCalculator from './components/organisms/SecondCalculator';
 
 function App() {
-  return <h1>hi</h1>;
+  return (
+  <>
+    <SecondCalculator />
+  </>
+  );
 }
 
 export default App;
