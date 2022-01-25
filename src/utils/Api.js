@@ -6,7 +6,7 @@ async function GetApi() {
     return response.json();
   })
   .then(function(myJson) {
-    return myJson.quotes;
+    return myJson;
   });
   return data
 }

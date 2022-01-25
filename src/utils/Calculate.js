@@ -14,7 +14,7 @@ export async function GetJsonData() {
       return response.json();
     })
     .then(function (myJson) {
-      return myJson.quotes;
+      return myJson;
     });
   return data;
 }

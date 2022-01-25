@@ -1,6 +1,6 @@
 import React from 'react';
-import FirstCalculator from './components/organisms/FirstCalculator';
-import SecondCalculator from './components/organisms/SecondCalculator';
+import FirstCalculator from './components/FirstCalculator';
+import SecondCalculator from './components/SecondCalculator';
 
 function App() {
   return (

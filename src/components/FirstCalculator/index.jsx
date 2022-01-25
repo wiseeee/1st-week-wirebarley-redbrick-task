@@ -1,6 +1,5 @@
 import  { useState,useEffect } from 'react';
-import {caculating, GetJsonData} from '../../../utils/Calculate.js';
-import {InputSelect} from '../../molecules/InputSelect';
+import {caculating, GetJsonData} from '../../utils/Calculate.js';
 
   function FirstCalculator () {
     const [country, setCountry] = useState("KRW");
@@ -11,10 +10,11 @@ import {InputSelect} from '../../molecules/InputSelect';
     useEffect(() => {
       async function GetApi () {
         const jsonData = await GetJsonData();
-        setData(jsonData)
+        setData(jsonData.quotes)
       }
       GetApi();
     },[])
+    console.log(data)
 
     const handleSelect = (e) => {
       setCountry(e.target.value);
