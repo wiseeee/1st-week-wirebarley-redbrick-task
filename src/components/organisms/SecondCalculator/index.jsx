@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import InputSelect from '../../molecules/InputSelect';
 import Tabs from '../../molecules/Taps';
 
+const currency = ['USD', 'CAD', 'KRW', 'HKD', 'JPY', 'CNY'];
+
 function SecondCalculator() {
   const [selected, setSelected] = useState('USD');
   const [mock, setMock] = useState({
@@ -10,11 +12,12 @@ function SecondCalculator() {
     privacy: 'https://currencylayer.com/privacy',
     timestamp: 1643011864,
   });
+  const [input, setInput] = useState('')
 
   return (
     <>
-      <InputSelect selected={selected} setSelected={setSelected}></InputSelect>
-      <Tabs currency={selected} mock={mock} />
+      <InputSelect currencyList={currency} input={input} setInput={setInput} selected={selected} setSelected={setSelected}></InputSelect>
+      <Tabs currency={selected} mock={mock} result={input}/>
     </>
   );
 }

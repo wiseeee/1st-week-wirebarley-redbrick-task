@@ -2,13 +2,13 @@ import React from 'react';
 import Input from '../../atoms/Input/index';
 import DropDown from '../../atoms/DropDown/index';
 
-const currency = ['USD', 'CAD', 'KRW', 'HKD', 'JPY', 'CNY'];
 
-export default function InputSelect({ selected, setSelected }) {
+
+export default function InputSelect({ currencyList, selected, setSelected, input, setInput }) {
   return (
     <>
-      <Input type="number"></Input>
-      <DropDown arr={currency} selected={selected} setSelected={setSelected}></DropDown>
+      <Input type="number" input={input} setInput={setInput} ></Input>
+      <DropDown currencyList={currencyList} selected={selected} setSelected={setSelected}></DropDown>
     </>
   );
 }

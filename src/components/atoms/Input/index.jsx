@@ -19,23 +19,35 @@ import React from 'react';
 
 //   return true;
 // };
-
-const onChange = (e) => {
-  const inputValue = e.target.value;
-
-  console.log(inputValue);
-  //TODO: 특수문자 예외처리 (+,-,*)
-  //TODO: 0000 입력
-  //
-
-  if (Number(inputValue) > 1000) {
-    e.target.value = 1000;
-  }
-  
-};
-
-const Input = ({ type = 'text', id = '', }) => (
-  <input type={type} id={id} onChange={onChange} />
-);
-
+function Input ({ type = 'text', id = '', input, setInput }) {
+    const onChange = (e) => {
+        const inputValue = e.target.value;
+      
+        //TODO: 특수문자 예외처리 (+,-,*)
+        //TODO: 0000 입력
+        //
+      
+        if (Number(inputValue) > 1000) {
+          e.target.value = 1000;
+          setInput(e.target.value)
+        }
+        if (isDoubleZero) {
+            console.log("!")
+        } 
+       
+        setInput(e.target.value);
+        
+      };
+      const isDoubleZero = (n) => {
+        if (n.includes("00")){
+            const result = String(n).split("").reduce((a,b) => Number(a) + Number(b))
+            return result === 0 ? true : false
+        } else {
+            return false;
+        }
+      }
+    return (
+        <input type={type} id={id} onChange={onChange} />
+      );
+} 
 export default Input;

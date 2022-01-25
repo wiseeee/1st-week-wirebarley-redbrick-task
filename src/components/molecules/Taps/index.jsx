@@ -67,7 +67,7 @@ const Taps = ({ currency, result, mock }) => (
       })}
     </ul>
     <h1>
-      {currency} : {result}
+      {currency} : {result.substr()}
     </h1>
     <p>기준일 : {unixTimestamp(mock.timestamp)}</p>
   </div>
