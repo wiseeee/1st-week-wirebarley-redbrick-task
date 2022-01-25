@@ -1,31 +1,4 @@
-import React from 'react';
-
-const tabArr = [
-  {
-    tabTitle: 'USD',
-    tabContent: <div>tab1 content</div>,
-  },
-  {
-    tabTitle: 'CAD',
-    tabContent: <div>tab1 content</div>,
-  },
-  {
-    tabTitle: 'KRW',
-    tabContent: <div>tab1 content</div>,
-  },
-  {
-    tabTitle: 'HKD',
-    tabContent: <div>tab1 content</div>,
-  },
-  {
-    tabTitle: 'JPY',
-    tabContent: <div>tab1 content</div>,
-  },
-  {
-    tabTitle: 'CNY',
-    tabContent: <div>tab1 content</div>,
-  },
-];
+import React, { useState } from 'react';
 
 const numberToMonth = (number) => {
   const MONTH_TYPE = {
@@ -55,22 +28,63 @@ const unixTimestamp = (time) => {
   return year + '-' + month + '-' + day.substr(-2);
 };
 
-const Taps = ({ currency, result, mock }) => (
-  <div>
-    <ul>
-      {tabArr.map((section, index) => {
-        return currency === section.tabTitle ? (
-          <h3 key={index}>{section.tabTitle}</h3>
-        ) : (
-          <li key={index}>{section.tabTitle}</li>
-        );
-      })}
-    </ul>
-    <h1>
-      {currency} : {result.substr()}
-    </h1>
-    <p>기준일 : {unixTimestamp(mock.timestamp)}</p>
-  </div>
-);
+function Taps({ currency, result, mock }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const tabArr = [
+    {
+      tabTitle: 'USD',
+      tabContent: <div>tab1 content</div>,
+    },
+    {
+      tabTitle: 'CAD',
+      tabContent: <div>tab1 content</div>,
+    },
+    {
+      tabTitle: 'KRW',
+      tabContent: <div>tab1 content</div>,
+    },
+    {
+      tabTitle: 'HKD',
+      tabContent: <div>tab1 content</div>,
+    },
+    {
+      tabTitle: 'JPY',
+      tabContent: <div>tab1 content</div>,
+    },
+    {
+      tabTitle: 'CNY',
+      tabContent: <div>tab1 content</div>,
+    },
+  ];
+
+  const tabClickHandler = (index) => {
+    setActiveIndex(index);
+  };
+
+  return (
+    <div>
+      <ul>
+        {tabArr.map(
+          (section, index) => (
+            // {
+            //   return currency === section.tabTitle ? (
+            //     <h3 key={index}>{section.tabTitle}</h3>
+            //   ) : (
+            <li key={index} onClick={() => tabClickHandler(index)}>
+              {section.tabTitle}
+            </li>
+          )
+          //   );
+          // }
+        )}
+      </ul>
+      <h1>
+        {tabArr[activeIndex].tabTitle} : {result.substr()}
+      </h1>
+      <p>기준일 : {unixTimestamp(mock.timestamp)}</p>
+    </div>
+  );
+}
 
 export default Taps;
