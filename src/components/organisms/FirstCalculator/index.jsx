@@ -27,6 +27,8 @@ import {caculating, GetJsonData} from '../../../utils/Calculate.js';
       setPrice(e.target.value)
     }
 
+    const currency = {KRW: "한국", JPY:"일본", PHP:"필리핀"};
+
     return (
       data ? (
         <>
@@ -38,9 +40,11 @@ import {caculating, GetJsonData} from '../../../utils/Calculate.js';
             <div>
               <span>수취국가:</span>
               <select onChange ={handleSelect}>
-                <option key="KRW" value="KRW">한국(KRW)</option>
-                <option key="JPY" value="JPY">일본(JPY)</option>
-                <option key="PHP" value="PHP">필리핀(PHP)</option>
+                {Object.keys(currency).map(key => {
+                  return(
+                    <option key={key} value={key}>{currency[key]+"("+key+")"}</option>
+                  )
+                })}
               </select>
             </div>
             <div>
