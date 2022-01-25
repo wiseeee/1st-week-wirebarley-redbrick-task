@@ -1,9 +1,12 @@
 import React from 'react';
+import InputSelect from '../../molecules/InputSelect';
 
 function SecondCalculator() {
-  return <div>
-      second
-  </div>;
+  return (
+    <>
+      <InputSelect></InputSelect>
+    </>
+  );
 }
 
 export default SecondCalculator;
