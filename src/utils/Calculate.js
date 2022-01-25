@@ -1,12 +1,7 @@
-// input => "CAD", "KRW"
+import GetApi from '../utils/Api'
 
-// output => "102.47", "1200.01"
-
-export const data = {
-    USDKRW: "1121.419945",
-    USDJPY: "110.959498",
-    USDPHP: "51.300504"
-}
+export const data = GetApi();
+console.log(data);
 
 export default function caculating(input, target){
     const exchageRate = data["USD"+target];

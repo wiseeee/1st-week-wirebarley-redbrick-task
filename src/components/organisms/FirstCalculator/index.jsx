@@ -49,9 +49,7 @@ import Input from '../../atoms/Input'
 
         {amount === '' ? <></> : ( 
           <div>
-            <span>수취금액은</span>
-            <span>{amount}</span>
-            <span>입니다.</span>
+            수취금액은 {amount} USD 입니다.
           </div>
         )}
           
