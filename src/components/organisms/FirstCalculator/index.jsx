@@ -8,7 +8,7 @@ import caculating from '../../../utils/Calculate.js';
     const [ans, setAns] = useState("");
 
     useEffect(() => {
-      const Address = "http://api.currencylayer.com/live?access_key=" + process.env.REACT_APP_API_KEY + "&format=1"
+      const Address = "http://api.currencylayer.com/live?access_key=" + process.env.REACT_APP_API_KEY + "&currencies=CAD,KRW,HKD,JPY,CNY,PHP&source=USD&&format=1"
       async function GetApi () {
         const d = await fetch(Address)
         .then(function(response) {
