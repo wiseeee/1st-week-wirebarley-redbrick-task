@@ -1,31 +1,5 @@
-import React from 'react';
-
-const tabArr = [
-  {
-    tabTitle: 'USD',
-    tabContent: <div>tab1 content</div>,
-  },
-  {
-    tabTitle: 'CAD',
-    tabContent: <div>tab1 content</div>,
-  },
-  {
-    tabTitle: 'KRW',
-    tabContent: <div>tab1 content</div>,
-  },
-  {
-    tabTitle: 'HKD',
-    tabContent: <div>tab1 content</div>,
-  },
-  {
-    tabTitle: 'JPY',
-    tabContent: <div>tab1 content</div>,
-  },
-  {
-    tabTitle: 'CNY',
-    tabContent: <div>tab1 content</div>,
-  },
-];
+import React, { useState } from 'react';
+import { Main, TabMenu, Tab, TabContent } from './styles';
 
 const numberToMonth = (number) => {
   const MONTH_TYPE = {
@@ -47,30 +21,52 @@ const numberToMonth = (number) => {
 };
 
 const unixTimestamp = (time) => {
-  const timeGapToKST = 9 * 60 * 60 * 1000;
-  const date = new Date(time * 1000 + timeGapToKST);
+  // const timeGapToKST = 9 * 60 * 60 * 1000;
+  const date = new Date(time * 1000);
   const year = date.getFullYear();
   const month = numberToMonth(date.getMonth() + 1);
   const day = '0' + date.getDate();
-  return year + '-' + month + '-' + day.substr(-2);
+  // const hour = '0' + date.getHours();
+  // const min = '0' + date.getMinutes();
+  return (
+    year + '-' + month + '-' + day.substr(-2)
+    // + ' ' +
+    // hour.substr(-2) +
+    // ':' +
+    // min.substr(-2)
+  );
 };
 
-const Taps = ({ currency, result, mock }) => (
-  <div>
-    <ul>
-      {tabArr.map((section, index) => {
-        return currency === section.tabTitle ? (
-          <h3 key={index}>{section.tabTitle}</h3>
-        ) : (
-          <li key={index}>{section.tabTitle}</li>
-        );
-      })}
-    </ul>
-    <h1>
-      {currency} : {result.substr()}
-    </h1>
-    <p>기준일 : {unixTimestamp(mock.timestamp)}</p>
-  </div>
-);
+function Taps({ currencyList, exchanged, data, setTabSelected }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const tabClickHandler = (index) => {
+    setActiveIndex(index);
+    setTabSelected(currencyList[index]);
+  };
+
+  return (
+    <Main>
+      <TabMenu>
+        {currencyList.map((currency, index) => (
+          <Tab
+            key={index}
+            onClick={() => tabClickHandler(index)}
+            isActive={activeIndex === index}
+          >
+            {currency}
+          </Tab>
+        ))}
+      </TabMenu>
+      <TabContent>
+        <h2>
+          {currencyList[activeIndex]} :{' '}
+          {exchanged ? Number(exchanged).toFixed(2) : ''}
+        </h2>
+        <p>기준일 : {unixTimestamp(data?.timestamp)}</p>
+      </TabContent>
+    </Main>
+  );
+}
 
 export default Taps;
