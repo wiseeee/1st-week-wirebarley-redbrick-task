@@ -2,20 +2,29 @@
 // src/components/atoms/input/index.js
 import React from 'react';
 
-function Input({ type = 'text', id = '', input, setInput }) {
+const numAddComma = (num) => new Intl.NumberFormat().format(num);
+
+function Input({ type = 'text', id = '', setInput }) {
   const onChange = (e) => {
-    const inputValue = e.target.value;
+    const value = e.target.value;
 
-    //TODO: 특수문자 예외처리 (+,-,*)
-    if (Number(inputValue) > 1000) {
-      e.target.value = 1000;
+    const inputValue = Number(value.replace(/\,/g, ''));
+
+    if (!/^[0-9]+$/.test(inputValue)) {
+      const tmp = value.slice(0, -1);
+
+      e.target.value = tmp;
+      setInput(tmp);
     }
 
-    if (isDoubleZero(e.target.value)) {
+    if (inputValue >= 1000) {
+      e.target.value = numAddComma(1000);
+      setInput(1000);
+    } else if (isDoubleZero(value)) {
       e.target.value = 0;
+    } else {
+      setInput(inputValue);
     }
-
-    setInput(e.target.value);
   };
 
   const isDoubleZero = (n) => {

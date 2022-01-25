@@ -21,66 +21,49 @@ const numberToMonth = (number) => {
 };
 
 const unixTimestamp = (time) => {
-  const timeGapToKST = 9 * 60 * 60 * 1000;
-  const date = new Date(time * 1000 + timeGapToKST);
+  // const timeGapToKST = 9 * 60 * 60 * 1000;
+  const date = new Date(time * 1000);
   const year = date.getFullYear();
   const month = numberToMonth(date.getMonth() + 1);
   const day = '0' + date.getDate();
-  return year + '-' + month + '-' + day.substr(-2);
+  // const hour = '0' + date.getHours();
+  // const min = '0' + date.getMinutes();
+  return (
+    year + '-' + month + '-' + day.substr(-2)
+    // + ' ' +
+    // hour.substr(-2) +
+    // ':' +
+    // min.substr(-2)
+  );
 };
 
-function Taps({ currency, result, mock }) {
+function Taps({ currencyList, exchanged, data, setTabSelected }) {
   const [activeIndex, setActiveIndex] = useState(0);
-
-  const tabArr = [
-    {
-      tabTitle: 'USD',
-      tabContent: <div>tab1 content</div>,
-    },
-    {
-      tabTitle: 'CAD',
-      tabContent: <div>tab1 content</div>,
-    },
-    {
-      tabTitle: 'KRW',
-      tabContent: <div>tab1 content</div>,
-    },
-    {
-      tabTitle: 'HKD',
-      tabContent: <div>tab1 content</div>,
-    },
-    {
-      tabTitle: 'JPY',
-      tabContent: <div>tab1 content</div>,
-    },
-    {
-      tabTitle: 'CNY',
-      tabContent: <div>tab1 content</div>,
-    },
-  ];
 
   const tabClickHandler = (index) => {
     setActiveIndex(index);
+    setTabSelected(currencyList[index]);
   };
 
   return (
     <Main>
       <TabMenu>
-        {tabArr.map((section, index) => (
+        {currencyList.map((currency, index) => (
           <Tab
             key={index}
             onClick={() => tabClickHandler(index)}
             isActive={activeIndex === index}
           >
-            {section.tabTitle}
+            {currency}
           </Tab>
         ))}
       </TabMenu>
       <TabContent>
         <h2>
-          {tabArr[activeIndex].tabTitle} : {result.substr()}
+          {currencyList[activeIndex]} :{' '}
+          {exchanged ? Number(exchanged).toFixed(2) : ''}
         </h2>
-        <p>기준일 : {unixTimestamp(mock.timestamp)}</p>
+        <p>기준일 : {unixTimestamp(data?.timestamp)}</p>
       </TabContent>
     </Main>
   );

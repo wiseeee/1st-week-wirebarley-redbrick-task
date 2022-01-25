@@ -11,7 +11,7 @@ export default function InputSelect({
 }) {
   return (
     <>
-      <Input input={input} setInput={setInput}></Input>
+      <Input setInput={setInput}></Input>
       <DropDown
         currencyList={currencyList}
         selected={selected}
