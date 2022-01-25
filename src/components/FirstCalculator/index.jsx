@@ -1,19 +1,10 @@
-import { useState, useEffect } from 'react';
-import { caculating, GetJsonData } from '../../utils/Calculate.js';
+import { useState } from 'react';
+import { caculating } from '../../utils/Calculate.js';
 
-function FirstCalculator() {
+function FirstCalculator({ data }) {
   const [country, setCountry] = useState('KRW');
   const [price, setPrice] = useState('');
-  const [data, setData] = useState(null);
   const [ans, setAns] = useState('');
-
-  useEffect(() => {
-    async function GetApi() {
-      const jsonData = await GetJsonData();
-      setData(jsonData.quotes);
-    }
-    GetApi();
-  }, []);
 
   const handleSelect = (e) => {
     setCountry(e.target.value);
@@ -24,7 +15,11 @@ function FirstCalculator() {
       alert('송금액이 바르지 않습니다.');
     } else {
       setAns(
-        `수취금액은 ${caculating(data, price, country)} ${country} 입니다 `
+        `수취금액은 ${caculating(
+          data.quotes,
+          price,
+          country
+        )} ${country} 입니다 `
       );
     }
   };
@@ -54,7 +49,7 @@ function FirstCalculator() {
         </div>
         <div>
           <span>
-            환율:{Number(data['USD' + country]).toFixed(2)}
+            환율:{Number(data.quotes['USD' + country]).toFixed(2)}
             {country} / USD
           </span>
         </div>

@@ -1,29 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { GetJsonData } from '../../utils/Calculate.js';
 import { Main, TabMenu, Tab, TabContent } from './styled';
 import { currencyList } from '../../commons/constants/currencyList';
 import { unixTimestamp } from '../../utils/timeConvertor';
 import { numAddComma } from '../../utils/numAddComma';
 
-function SecondCalculator() {
+function SecondCalculator({ data }) {
   const [selected, setSelected] = useState('USD');
   const [tabSelected, setTabSelected] = useState('USD');
-  const [data, setData] = useState();
   const [input, setInput] = useState('');
   const [exchanged, setExchanged] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    async function GetApi() {
-      const jsonData = await GetJsonData();
-
-      console.log(jsonData);
-
-      setData(jsonData);
-    }
-    GetApi();
-  }, [selected]);
 
   useEffect(() => {
     if (selected === tabSelected) {
@@ -42,15 +29,22 @@ function SecondCalculator() {
 
   const onChange = (e) => {
     const value = e.target.value;
-    const inputValue = Number(value.replace(/\,/g, ''));
 
-    if (!/^[0-9]+$/.test(inputValue)) {
+    if (!/^[0-9]+$/.test(value)) {
       const tmp = value.slice(0, -1);
 
       e.target.value = tmp;
       setInput(tmp);
+
+      return;
     }
+    const inputValue = Number(value.replace(/\,/g, ''));
+
+    console.log('outer' + inputValue);
+
     if (inputValue >= 1000) {
+      console.log(inputValue);
+
       e.target.value = numAddComma(1000);
       setInput(1000);
     } else if (isDoubleZero(value)) {
