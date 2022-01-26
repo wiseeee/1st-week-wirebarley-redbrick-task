@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Main, TabMenu, Tab, TabContent } from './styled';
-import { currencyList } from '../../commons/constants/currencyList';
+import { calculator2CurrencyList } from '../../commons/constants/currencyList';
 import { unixTimestamp } from '../../utils/timeConvertor';
 import { numAddComma } from '../../utils/numAddComma';
 
@@ -18,12 +18,9 @@ function SecondCalculator({ data }) {
       setExchanged(input);
     } else {
       const divider = selected === 'USD' ? 1 : data.quotes['USD' + selected];
-
       const mutiplier =
         tabSelected === 'USD' ? 1 : data.quotes['USD' + tabSelected];
-
       const exchanged = (Number(input) / divider) * mutiplier;
-
       setExchanged(exchanged);
     }
   }, [input, selected, tabSelected]);
@@ -36,7 +33,6 @@ function SecondCalculator({ data }) {
       const tmp = value.slice(0, -1);
       e.target.value = tmp;
       setInput(tmp);
-
       return;
     }
 
@@ -62,7 +58,7 @@ function SecondCalculator({ data }) {
 
   const tabClickHandler = (index) => {
     setActiveIndex(index);
-    setTabSelected(currencyList[index]);
+    setTabSelected(calculator2CurrencyList[index]);
   };
 
   const handleSelect = (e) => {
@@ -74,7 +70,7 @@ function SecondCalculator({ data }) {
       <h1>2nd 환율계산 </h1>
       <input type="text" id="" onChange={onChange} />
       <select onChange={handleSelect} name="currency" id="currency">
-        {currencyList.map((str, index) => (
+        {calculator2CurrencyList.map((str, index) => (
           <option key={index} value={str}>
             {str}
           </option>
@@ -82,7 +78,7 @@ function SecondCalculator({ data }) {
       </select>
       <Main>
         <TabMenu>
-          {currencyList.map((currency, index) => (
+          {calculator2CurrencyList.map((currency, index) => (
             <Tab
               key={index}
               onClick={() => tabClickHandler(index)}
@@ -94,7 +90,7 @@ function SecondCalculator({ data }) {
         </TabMenu>
         <TabContent>
           <h2>
-            {currencyList[activeIndex]} :{' '}
+            {calculator2CurrencyList[activeIndex]} :{' '}
             {exchanged ? Number(exchanged).toFixed(2) : ''}
           </h2>
           <p>기준일 : {unixTimestamp(data?.timestamp)}</p>

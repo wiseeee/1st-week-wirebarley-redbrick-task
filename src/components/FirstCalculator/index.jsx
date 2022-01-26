@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Exchange } from '../../utils/Calculate.js';
-import {Calculator1Currency} from '../../commons/constants/currencyList'
+import {calculator1CurrencyList} from '../../commons/constants/currencyList'
+import { exchange } from '../../utils/exchange';
 
 function FirstCalculator({ data }) {
   const [country, setCountry] = useState('KRW');
@@ -16,7 +16,7 @@ function FirstCalculator({ data }) {
       alert('송금액이 바르지 않습니다.');
     } else {
       setAns(
-        `수취금액은 ${Exchange(
+        `수취금액은 ${exchange(
           data.quotes,
           price,
           country
@@ -37,10 +37,10 @@ function FirstCalculator({ data }) {
         <div>
           <span>수취국가:</span>
           <select onChange={handleSelect}>
-            {Object.keys(Calculator1Currency).map((key) => {
+            {Object.keys(calculator1CurrencyList).map((key) => {
               return (
                 <option key={key} value={key}>
-                  {Calculator1Currency[key] + '(' + key + ')'}
+                  {calculator1CurrencyList[key] + '(' + key + ')'}
                 </option>
               );
             })}
