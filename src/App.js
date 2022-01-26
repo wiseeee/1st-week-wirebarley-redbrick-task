@@ -47,7 +47,7 @@ function App() {
         <CaculatorBox>
           <SecondCalculator data={data} />
         </CaculatorBox>
-      </MainPage>`
+      </MainPage>
     </BackgroundColor>
   );
 }
