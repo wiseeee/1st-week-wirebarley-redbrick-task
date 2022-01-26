@@ -28,41 +28,12 @@ function SecondCalculator({ data }) {
     }
   }, [input, selected, tabSelected]);
 
-  // const onChange = (e) => {
-  //   const value = e.target.value;
-
-  //   if (!/^[0-9]+$/.test(value)) {
-  //     const tmp = value.slice(0, -1);
-
-  //     e.target.value = tmp;
-  //     setInput(tmp);
-
-  //     return;
-  //   }
-  //   const inputValue = Number(value.replace(/\,/g, ''));
-
-  //   console.log('outer' + inputValue);
-
-  //   if (inputValue >= 1000) {
-  //     console.log(inputValue);
-
-  //     e.target.value = numAddComma(1000);
-  //     setInput(1000);
-  //   } else if (isDoubleZero(value)) {
-  //     e.target.value = 0;
-  //   } else {
-  //     e.target.value = numAddComma(inputValue);
-  //     setInput(numAddComma(inputValue));
-  //   }
-  // };
-
   const onChange = (e) => {
     const value = e.target.value;
     const inputValue = Number(value.replace(/\,/g, ''));
 
-    if (!/^[0-9]+$/.test(value)) {
+    if (!/^[0-9]+$/.test(inputValue)) {
       const tmp = value.slice(0, -1);
-
       e.target.value = tmp;
       setInput(tmp);
 
@@ -75,6 +46,7 @@ function SecondCalculator({ data }) {
     } else if (isDoubleZero(value)) {
       e.target.value = 0;
     } else {
+      setInput(inputValue);
       e.target.value = numAddComma(inputValue);
       setInput(numAddComma(inputValue));
     }
