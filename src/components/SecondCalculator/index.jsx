@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-escape */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { Main, TabMenu, Tab, TabContent } from './styled';
+import { Main, TabMenu, Tab, TabContent,Input } from './styled';
 import { calculator2CurrencyList } from '../../commons/constants/currencyList';
 import { unixTimestamp } from '../../utils/timeConvertor';
 import { numAddComma } from '../../utils/numAddComma';
@@ -67,8 +67,8 @@ function SecondCalculator({ data }) {
 
   return (
     <>
-      <h1>2nd 환율계산 </h1>
-      <input type="text" id="" onChange={onChange} />
+      <h1>2nd 환율계산기</h1>
+      <Input type="text" id="" onChange={onChange} />
       <select onChange={handleSelect} name="currency" id="currency">
         {calculator2CurrencyList.map((str, index) => (
           <option key={index} value={str}>

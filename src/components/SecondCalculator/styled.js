@@ -17,7 +17,7 @@ export const Tab = styled.li`
   border-top: 2px solid black;
   border-left: 2px solid black;
   border-bottom: ${(props) =>
-    props.isActive ? '2px solid white' : '2px solid black'};
+    props.isActive ? '1px solid white' : '2px solid black'};
   padding: 6px;
   font-size: 14px;
   vertical-align: middle;
@@ -35,4 +35,9 @@ export const TabContent = styled.div`
   border-right: 2px solid black;
   border-bottom: 2px solid black;
   padding: 16px;
+`;
+
+export const Input = styled.input`
+  padding: 4px;
+  margin-right: 8px;
 `;

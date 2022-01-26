@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {calculator1CurrencyList} from '../../commons/constants/currencyList'
 import { exchange } from '../../utils/exchange';
+import { Label,FlexBox, Btn,BoldFont } from './styled';
 
 function FirstCalculator({ data }) {
   const [country, setCountry] = useState('KRW');
@@ -31,11 +32,11 @@ function FirstCalculator({ data }) {
 
   return (
     <>
-      <h1>1st 환율계산 </h1>
+      <h1>1st 환율계산기</h1>
       <div>
-        <div>송금국가: 미국(USD)</div>
-        <div>
-          <span>수취국가:</span>
+        <Label>송금국가: 미국(USD)</Label>
+        <FlexBox>
+          <Label>수취국가:</Label>
           <select onChange={handleSelect}>
             {Object.keys(calculator1CurrencyList).map((key) => {
               return (
@@ -45,25 +46,27 @@ function FirstCalculator({ data }) {
               );
             })}
           </select>
-        </div>
+        </FlexBox>
         <div>
           {data ? (
             <>
-              <span>
-                환율:{Number(data.quotes['USD' + country]).toFixed(2)}
-                {country} / USD
-              </span>
-              <div>
-                <span>송금액:</span>
+              <Label>
+                환율:
+                <BoldFont>
+                  {Number(data.quotes['USD' + country]).toFixed(2)} {country}/USD
+                </BoldFont>
+              </Label>
+              <FlexBox>
+                <Label>송금액:</Label>
                 <input type="number" id="price" onChange={onChange} /> USD
-              </div>
-              <button type="submit" onClick={onSubmit}>
+              </FlexBox>
+              <Btn type="submit" onClick={onSubmit}>
                 Submit
-              </button>
-              <div>{ans}</div>
+              </Btn>
+              <Label>{ans}</Label>
             </>
           ) : (
-            <span>network에 문제가 발생했습니다</span>
+            <Label>network에 문제가 발생했습니다</Label>
           )}
         </div>
       </div>
