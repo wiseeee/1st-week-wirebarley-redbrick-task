@@ -16,8 +16,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy" : "gh-pages -d build",
-    "predeploy" : "npm run build",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -39,5 +39,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "http://pre-onboarding-course-team-6.github.io/1st-week-wirebarley-redbrick-task/"
+  "proxy": "http://api.currencylayer.com"
 }
