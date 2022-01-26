@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import FirstCalculator from './components/FirstCalculator';
 import SecondCalculator from './components/SecondCalculator';
-import GetJsonData from '../src/utils/Api';
+import {GetJsonData} from '../src/utils/Calculate';
 
 function App() {
   const [data, setData] = useState(null);

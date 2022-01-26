@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { caculating } from '../../utils/Calculate.js';
+import { Exchange } from '../../utils/Calculate.js';
+import {Calculator1Currency} from '../../commons/constants/currencyList'
 
 function FirstCalculator({ data }) {
   const [country, setCountry] = useState('KRW');
@@ -10,12 +11,12 @@ function FirstCalculator({ data }) {
     setCountry(e.target.value);
   };
 
-  const OnSubmit = () => {
+  const onSubmit = () => {
     if (price < 0 || price > 10000 || price === '') {
       alert('송금액이 바르지 않습니다.');
     } else {
       setAns(
-        `수취금액은 ${caculating(
+        `수취금액은 ${Exchange(
           data.quotes,
           price,
           country
@@ -28,8 +29,6 @@ function FirstCalculator({ data }) {
     setPrice(e.target.value);
   };
 
-  const currency = { KRW: '한국', JPY: '일본', PHP: '필리핀' };
-
   return data ? (
     <>
       <h1>1st 환율계산 </h1>
@@ -38,10 +37,10 @@ function FirstCalculator({ data }) {
         <div>
           <span>수취국가:</span>
           <select onChange={handleSelect}>
-            {Object.keys(currency).map((key) => {
+            {Object.keys(Calculator1Currency).map((key) => {
               return (
                 <option key={key} value={key}>
-                  {currency[key] + '(' + key + ')'}
+                  {Calculator1Currency[key] + '(' + key + ')'}
                 </option>
               );
             })}
@@ -57,7 +56,7 @@ function FirstCalculator({ data }) {
           <span>송금액:</span>
           <input type="number" id="price" onChange={onChange} /> USD
         </div>
-        <button type="submit" onClick={OnSubmit}>
+        <button type="submit" onClick={onSubmit}>
           Submit
         </button>
       </div>
