@@ -29,7 +29,7 @@ function FirstCalculator({ data }) {
     setPrice(e.target.value);
   };
 
-  return data ? (
+  return (
     <>
       <h1>1st 환율계산 </h1>
       <div>
@@ -47,24 +47,28 @@ function FirstCalculator({ data }) {
           </select>
         </div>
         <div>
-          <span>
-            환율:{Number(data.quotes['USD' + country]).toFixed(2)}
-            {country} / USD
-          </span>
+          {data ? (
+            <>
+              <span>
+                환율:{Number(data.quotes['USD' + country]).toFixed(2)}
+                {country} / USD
+              </span>
+              <div>
+                <span>송금액:</span>
+                <input type="number" id="price" onChange={onChange} /> USD
+              </div>
+              <button type="submit" onClick={onSubmit}>
+                Submit
+              </button>
+              <div>{ans}</div>
+            </>
+          ) : (
+            <span>network에 문제가 발생했습니다</span>
+          )}
         </div>
-        <div>
-          <span>송금액:</span>
-          <input type="number" id="price" onChange={onChange} /> USD
-        </div>
-        <button type="submit" onClick={onSubmit}>
-          Submit
-        </button>
       </div>
-      <div>{ans}</div>
     </>
-  ) : (
-    <>no data</>
-  );
+  )
 }
 
 export default FirstCalculator;
