@@ -6,9 +6,9 @@ https://pob-sixted-week1.herokuapp.com/
 
 <br>
 
-## 🏹 과제 구현 목록
+## 🏹 구현 목록
 
-## API 연동
+### API 연동
   - 환율정보 갱신
 
 <br>
