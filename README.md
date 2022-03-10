@@ -4,6 +4,13 @@
 ## 🔗 배포
 https://pob-sixted-week1.herokuapp.com/
 
+## 기술스택
+
+ <img alt="react" src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+
+<img alt="styled-components" src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styled-components&logoColor=white"> <img alt="prettier" src="https://img.shields.io/badge/prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white">
+
+
 <br>
 
 ## 🏹 구현 목록
