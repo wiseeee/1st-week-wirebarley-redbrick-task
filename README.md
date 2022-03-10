@@ -1,34 +1,19 @@
-<p align="middle" >
-  <img src="https://user-images.githubusercontent.com/24728385/148955263-b3a0e063-6950-46f2-82e9-1fcabc24e19e.jpeg"/>
-</p>
-<br/>
-<h1 align="middle">[과제] 와이어바알리/레드브릭</h1>
+
+<h1 align="middle">환율계산기</h1>
 
 ## 🔗 배포
 https://pob-sixted-week1.herokuapp.com/
 
 <br>
 
-## ⚙️ 설치 및 시작하는 법
-```
-$ git clone https://github.com/pre-onboarding-course-team-6/1st-week-wirebarley-redbrick-task
-
-$ cd 1st-week-wirebarley-redbrick-task
-
-$ npm install
-
-$ npm run start
-```
-<br>
-
 ## 🏹 과제 구현 목록
 
-### 공통기능 
-1. API 연동
-    - 환율정보 갱신
+## API 연동
+  - 환율정보 갱신
 
-### 계산기 👆
+<br>
 
+## 💻 계산기 1 실행 결과
 1. Select Box
     - 수취 국가를 바꾸면 환율정보도 갱신
 
@@ -40,8 +25,11 @@ $ npm run start
     - Submit 클릭시 수취금액 계산
     - 소수점 2자리까지, 3자리 이상되면 콤마 찍기
 
-### 계산기 ✌
+<img src="https://user-images.githubusercontent.com/82519641/157691057-79a463b9-a819-4048-ad05-bc5a081fbbdf.gif" width="400px">
 
+<br><br>
+
+## 💻 계산기 2 실행 결과
 1. Input Box
     - 특수문자 입력, 0중복입력 에러처리
     - 3자리 이상되면 콤마 찍기
@@ -58,12 +46,20 @@ $ npm run start
 4. 날짜
     - 날짜 포맷 KST으로 표기
 
+<img src="https://user-images.githubusercontent.com/82519641/157741896-2fb0a720-b714-431c-84d7-ed59437cb649.gif" width="400px">
 <br>
 
-## 💻 실행 결과
 
-![calculator](https://user-images.githubusercontent.com/34917143/151076441-0c803a98-d564-4fb2-9630-45eed857a3a9.gif)
+## ⚙️ 설치 및 시작하는 법
+```
+$ git clone https://github.com/wiseeee/1st-week-wirebarley-redbrick-task.git
 
+$ cd 1st-week-wirebarley-redbrick-task
+
+$ npm install
+
+$ npm run start
+```
 <br>
 
 ## 🏗 프로젝트 구조 설명
@@ -101,8 +97,3 @@ $ npm run start
 
 <br>
 
-## 👨‍👨‍👦‍👦 팀구성원 소개
-
-| [<img src="https://github.com/minbr0ther.png" width="100px">](https://github.com/minbr0ther) | [<img src="https://github.com/BGM-109.png" width="100px">](https://github.com/BGM-109) | [<img src="https://github.com/wiseeee.png" width="100px">](https://github.com/wiseeee) | [<img src="https://github.com/gilmujjang.png" width="100px">](https://github.com/gilmujjang) |
-| :------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------: |
-|                        [22_01 정민형](https://github.com/minbr0ther)                         |                       [22_01 김선명](https://github.com/BGM-109)                       |                       [22_01 이현명](https://github.com/wiseeee)                       |                        [22_01 민무길](https://github.com/gilmujjang)                         |
